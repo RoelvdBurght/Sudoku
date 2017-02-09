@@ -20,4 +20,5 @@ for x in range(len(sudoku)):
         str = horLijnDict[x]
         sudoku[x][y] = str[y]
 
-
+def horRowCheck(array):
+    
