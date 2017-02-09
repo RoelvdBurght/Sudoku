@@ -2,24 +2,22 @@
 w = 9
 h = 9
 
-#maakt array aan
-sudoku = [[0 for x in range(w)] for y in range(h)]
-
-#opent file en assignt de lijnen
+#opent file en assignt de lijnen in een dictionary
 sudokuFile = open("puzzle1.sudoku", "r")
 horLijnDict = {}
-x = 0
+x = 0       #als iemand hier een elegantere oplossing voor heeft: graag
 for line in sudokuFile:
-    #print (line)
-    line = line.replace(',', '')
-    #print (line)
+    line = line.replace(',', '')    #haalt kommas eruit
     horLijnDict[x] = line
-    ++x
-
-print (horLijnDict[0])
+    x +=1
 
 
+#maakt array aan
+sudoku = [[0 for x in range(w)] for y in range(h)]
+#knalt de lijnen in het array
 for x in range(len(sudoku)):
     for y in range(len(sudoku)):
-        horLijnDict[]
-        sudoku[x][y] = horLijnDict[]
+        str = horLijnDict[x]
+        sudoku[x][y] = str[y]
+
+
