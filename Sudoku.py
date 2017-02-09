@@ -20,5 +20,12 @@ for x in range(len(sudoku)):
         str = horLijnDict[x]
         sudoku[x][y] = str[y]
 
-def horRowCheck(array):
-    
+#werkt nog niet dus, kan ook aan main liggen
+def horRowCheck(array, x):
+    for y in range(len(array)):
+        if x == array[y]:
+            print ("joe")
+
+# jammer dit
+def main():
+    horRowCheck(sudoku[0], 3)
