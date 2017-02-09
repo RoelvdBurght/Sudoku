@@ -18,8 +18,13 @@ for line in sudokuFile:
 
 print (horLijnDict[0])
 
-
 for x in range(len(sudoku)):
     for y in range(len(sudoku)):
         horLijnDict[]
         sudoku[x][y] = horLijnDict[]
+
+def checkrow( numb, list ):
+    for x in len(list):
+        if list[x] = numb:
+            return false
+
