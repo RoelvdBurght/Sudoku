@@ -24,7 +24,7 @@ for x in range(len(sudoku)):
 #returnt True als checknumber voorkomt in gegeven rij
 #row is een list
 def rowCheck(row, checkNumber):
-    for i in range(len(row)):
+    for i in range(9):
         number = int(row[i])
         if checkNumber == number:
             return True
@@ -42,10 +42,11 @@ def makeSq(hor, vert):
     print (tempSq)
     for i in range(3):
         for j in range(3):
-            tempSq[i][j] = sudoku[vert][hor]
-            print (sudoku[vert][hor])
+            tempSq[j][i] = sudoku[vert][hor]
+            print (vert, "vert")
+            print (hor, "hor")
+            print (sudoku[vert][hor], "list")
             hor += 1
         vert += 1
-    print(tempSq)
 
-makeSq(2,2)
+makeSq(3,3)
