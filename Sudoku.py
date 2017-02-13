@@ -21,12 +21,31 @@ for x in range(len(sudoku)):
         sudoku[x][y] = str[y]
 
 
-#werkt nog niet dus, kan ook aan main liggen
-def horRowCheck(array, checkNumber):
-    for y in range(len(array)):
-        print (array[y])
-        print (checkNumber)
-        if checkNumber != array[y]:
-            print ("boe")
+#returnt True als checknumber voorkomt in gegeven rij
+#row is een list
+def rowCheck(row, checkNumber):
+    for i in range(len(row)):
+        number = int(row[i])
+        if checkNumber == number:
+            return True
 
-horRowCheck(sudoku[0], 0)
+#returnt True als checknumber voorkomt in gegeven kolom
+#coll is een int geen list zoals bij rowCheck
+def collCheck(coll, checkNumber):
+    for i in range(9):
+        number = int(sudoku[i][coll])
+        if number == checkNumber:
+            return True
+
+def makeSq(hor, vert):
+    tempSq = [[0 for p in range(3)]for q in range(3)]
+    print (tempSq)
+    for i in range(3):
+        for j in range(3):
+            tempSq[i][j] = sudoku[vert][hor]
+            print (sudoku[vert][hor])
+            hor += 1
+        vert += 1
+    print(tempSq)
+
+makeSq(2,2)
