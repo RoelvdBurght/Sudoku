@@ -21,22 +21,23 @@ for x in range(len(sudoku)):
         sudoku[x][y] = str[y]
 
 
-#returnt True als checknumber voorkomt in gegeven rij
-#row is een list
-def rowCheck(row, checkNumber):
-    for i in range(9):
+#returned True als een rij geschikt is voor checkNumber
+def rowCheck(rowIndex, checkNumber):
+    row = sudoku[rowIndex]
+    for i in range(8):
         number = int(row[i])
         if checkNumber == number:
             return True
+    return False
 
-#returnt True als checknumber voorkomt in gegeven kolom
-#coll is een int geen list zoals bij rowCheck
-def collCheck(coll, checkNumber):
-    for i in range(9):
-        number = int(sudoku[i][coll])
+#Returned True als een kolom geschikt is voor checkNumber
+def collCheck(collIndex, checkNumber):
+    for i in range(8):
+        number = int(sudoku[i][collIndex])
         if number == checkNumber:
-            return True
-
+            return False
+    return True
+""""
 def makeSq(hor, vert):
     tempSq = [[0 for p in range(3)]for q in range(3)]
     print (tempSq)
@@ -48,7 +49,13 @@ def makeSq(hor, vert):
             print (sudoku[vert][hor], "list")
             hor += 1
         vert += 1
+"""
 
-makeSq(3,3)
+# Kijkt of een specifieke plek in de sudoku geschikt is voor een nummer
+# Returned True als de plek geschikt is
+def spotCheck(spotIndex, checkNumber):
+    if rowCheck(spotIndex[0], checkNumber) or collCheck(spotIndex[1], checkNumber):
+        return False
+    return True
 
-# Hoi LEVEN
+print(spotCheck([1,1], 4))
