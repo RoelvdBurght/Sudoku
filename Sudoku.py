@@ -24,7 +24,7 @@ for x in range(len(sudoku)):
 #returnt True als checknumber voorkomt in gegeven rij
 #row is een list
 def rowCheck(row, checkNumber):
-    for i in range(len(row)):
+    for i in range(9):
         number = int(row[i])
         if checkNumber == number:
             return True
@@ -36,7 +36,7 @@ def collCheck(coll, checkNumber):
         number = int(sudoku[i][coll])
         if number == checkNumber:
             return True
-
+"""""
 def makeSq(hor, vert):
     tempSq = [[0 for p in range(3)]for q in range(3)]
     print (tempSq)
@@ -49,3 +49,11 @@ def makeSq(hor, vert):
     print(tempSq)
 
 makeSq(2,2)
+
+"""
+def spotCheck(spot, num):
+    if (rowCheck(spot[0], num) and collCheck(spot[1], num)):
+        return True
+    return False
+
+
