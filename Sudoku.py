@@ -46,19 +46,22 @@ def collCheck(collIndex, checkNumber):
         if number == checkNumber:
             return False
     return True
-""""
+
+#maakt een 3x3 array van arrays uit de grote sudoku
+#met hor & vert als linker bovenhoek
+#returnt 3x3 blokje als output
+
 def makeSq(hor, vert):
     tempSq = [[0 for p in range(3)]for q in range(3)]
     print (tempSq)
     for i in range(3):
+        x = hor
         for j in range(3):
-            tempSq[j][i] = sudoku[vert][hor]
-            print (vert, "vert")
-            print (hor, "hor")
-            print (sudoku[vert][hor], "list")
-            hor += 1
+            tempSq[i][j] = sudoku[vert][x]
+            x += 1
         vert += 1
-"""
+    return (tempSq)
+
 
 # Kijkt of een specifieke plek in de sudoku geschikt is voor een nummer
 # Returned True als de plek geschikt is
@@ -68,3 +71,6 @@ def spotCheck(spotIndex, checkNumber):
     return True
 
 print(spotCheck([1,1], 4))
+
+    print(tempSq)
+    return tempSq
