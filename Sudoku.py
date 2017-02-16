@@ -42,7 +42,7 @@ def collCheck(collIndex, checkNumber):
 #met hor & vert als linker bovenhoek
 #returnt 3x3 blokje als output
 
-def makeSq(hor, vert):
+def makeSq(vert, hor):
     tempSq = [[0 for p in range(3)]for q in range(3)]
     print (tempSq)
     for i in range(3):
@@ -61,7 +61,13 @@ def spotCheck(spotIndex, checkNumber):
         return False
     return True
 
-print(spotCheck([1,1], 4))
 
-    print(tempSq)
-    return tempSq
+x = makeSq(3,3)
+print(x)
+def checkSq(array[][]):
+    spotCounter = -1
+    for i in range(2):
+        for j in range(2):
+            spotCounter += 1
+            if array[i][j] == 0:
+                
