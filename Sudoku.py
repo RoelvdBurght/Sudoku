@@ -52,7 +52,7 @@ def makeSq(hor, vert):
             x += 1
         vert += 1
     return (tempSq)
-"""
+
 
 # Kijkt of een specifieke plek in de sudoku geschikt is voor een nummer
 # Returned True als de plek geschikt is
