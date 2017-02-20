@@ -11,7 +11,6 @@ for line in sudokuFile:
     horLijnDict[x] = line
     x +=1
 
-
 #maakt array aan
 sudoku = [[0 for x in range(w)] for y in range(h)]
 # knalt de lijnen in het array
@@ -19,7 +18,6 @@ for x in range(len(sudoku)):
     for y in range(len(sudoku)):
         str = horLijnDict[x]
         sudoku[x][y] = int(str[y])
-
 
 #returned True als een rij geschikt is voor het nummer checkNumber
 def rowCheck(rowIndex, checkNumber):
@@ -43,7 +41,6 @@ def collCheck(collIndex, checkNumber):
 #returnt 3x3 blokje als output
 def makeSq(col, row):
     tempSq = [[0 for p in range(3)]for q in range(3)]
-    print (tempSq)
     for i in range(3):
         x = col
         for j in range(3):
@@ -74,15 +71,6 @@ def spotCheck(spotIndex, checkNumber):
         return False
     return True
 
-"""
-def checkSq(*array):
-    spotCounter = -1
-    for i in range(2):
-        for j in range(2):
-            spotCounter += 1
-            if array[i][j] == 0:
-"""
-
 # Creates a list with usable ints for the input row
 def usableInts( row ):
     usable = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -93,19 +81,9 @@ def usableInts( row ):
             usable.remove(existingrow[i])
     return usable
 
-usableInts(2)
-
-
-#print(getCornerCoordinates(8,8))
-
-# print(getCorner# Coordinates(8,8))
 def isSudokuFilled(sudoku):
     for i in range(h):
         for j in range(w):
             if sudoku[i][j] == 0:
                 return False
-            else:
-               print(sudoku)
-  #  return True
 
-print(isSudokuFilled(sudoku))
