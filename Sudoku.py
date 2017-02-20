@@ -1,6 +1,6 @@
 # dimensies array
-w = 8
-h = 8
+w = 9
+h = 9
 
 # opent file en assignt de lijnen in een dictionary
 sudokuFile = open("puzzle1.sudoku", "r")
@@ -41,7 +41,7 @@ def collCheck(collIndex, checkNumber):
 #maakt een 3x3 array van arrays uit de grote sudoku
 #met hor & vert als linker bovenhoek
 #returnt 3x3 blokje als output
-def makeSq(*array):
+def makeSq(array):
     hor = array[0]
     vert = array[1]
     tempSq = [[0 for p in range(3)]for q in range(3)]
@@ -72,14 +72,15 @@ def checkSq(*array):
             if array[i][j] == 0:
 """
 
+# Creates a list with usable ints for the input row
 def usableInts( row ):
     usable = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     existingrow = sudoku[row]
-    existingrow = list(map(int, existingrow))
     for i in range(len(existingrow)):
         if existingrow[i] != 0:
             usable.remove(existingrow[i])
-    print(usable)
+    return usable
+
 usableInts(2)
 
 def getCornerCoordinates(x, y):
@@ -87,4 +88,15 @@ def getCornerCoordinates(x, y):
     correctionY = y%3
     return [x-correctionX, y-correctionY]
 
-#print(getCornerCoordinates(8,8))
+
+# print(getCorner# Coordinates(8,8))
+def isSudokuFilled(sudoku):
+    for i in range(h):
+        for j in range(w):
+            if sudoku[i][j] == 0:
+                return False
+            else:
+               print(sudoku)
+  #  return True
+
+print(isSudokuFilled(sudoku))
