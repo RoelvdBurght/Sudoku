@@ -28,7 +28,7 @@ def horRowCheck(array, checkNumber):
         if checkNumber != array[y]:
             print ("boe")
 
-horRowCheck(sudoku[0], 0)
+# horRowCheck(sudoku[0], 0)
 
 #returned True als een rij geschikt is voor checkNumber
 def rowCheck(rowIndex, checkNumber):
@@ -36,8 +36,8 @@ def rowCheck(rowIndex, checkNumber):
     for i in range(8):
         number = int(row[i])
         if checkNumber == number:
-            return True
-    return False
+            return False
+    return True
 
 #Returned True als een kolom geschikt is voor checkNumber
 def collCheck(collIndex, checkNumber):
@@ -50,7 +50,6 @@ def collCheck(collIndex, checkNumber):
 #maakt een 3x3 array van arrays uit de grote sudoku
 #met hor & vert als linker bovenhoek
 #returnt 3x3 blokje als output
-
 def makeSq(hor, vert):
     tempSq = [[0 for p in range(3)]for q in range(3)]
     print (tempSq)
@@ -81,3 +80,10 @@ def UsableInts( row ):
     for i in range(8):
         if existingrow[i] != 0:
             usable.append(existingrow[i])
+
+def getCornerCoordinates(x, y):
+    correctionX = x%3
+    correctionY = y%3
+    return [x-correctionX, y-correctionY]
+
+print(getCornerCoordinates(8,8))
