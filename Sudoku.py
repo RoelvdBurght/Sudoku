@@ -42,26 +42,25 @@ def collCheck(collIndex, checkNumber):
 #maakt een 3x3 array van arrays uit de grote sudoku
 #met hor & vert als linker bovenhoek
 #returnt 3x3 blokje als output
-def makeSq(array):
-    hor = array[0]
-    vert = array[1]
+def makeSq(col, row):
     tempSq = [[0 for p in range(3)]for q in range(3)]
     for i in range(3):
-        x = hor
+        x = col
         for j in range(3):
-            tempSq[i][j] = sudoku[vert][x]
+            tempSq[i][j] = sudoku[row][x]
             x += 1
-        vert += 1
+        row += 1
     return (tempSq)
 
-def getCornerCoordinates(x, y):
+def getCornerCoordinates(x):
     correctionX = x%3
-    correctionY = y%3
-    return [x-correctionX, y-correctionY]
+    return x-correctionX
 
-def sqCheck(x, y, checkNumber):
-    coordinates = getCornerCoordinates(x, y)
-    tempSq = makeSq(coordinates)
+# Neemt de coördinaten van een plek en een nummer als input.
+# Returned true als de plek geschikt is, en anders False
+def sqCheck(row, col, checkNumber):
+    tempSq = makeSq(getCornerCoordinates(col), getCornerCoordinates(row))
+    print(tempSq)
     for i in range(3):
         for j in range(3):
             number = tempSq[i][j]
