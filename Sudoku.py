@@ -75,7 +75,7 @@ def spotCheck(spotIndex, checkNumber):
    # print(tempSq)
     #return tempSq
 
-def UsableInts( row ):
+def usableInts( row ):
     usable = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     existingrow = sudoku[row]
     existingrow = list(map(int, existingrow))
@@ -83,11 +83,11 @@ def UsableInts( row ):
         if existingrow[i] != 0:
             usable.remove(existingrow[i])
     print(usable)
+usableInts(2)
 
 def getCornerCoordinates(x, y):
     correctionX = x%3
     correctionY = y%3
     return [x-correctionX, y-correctionY]
 
-print(getCornerCoordinates(8,8))
-UsableInts(0)
+#print(getCornerCoordinates(8,8))
