@@ -33,7 +33,6 @@ def rowCheck(rowIndex, checkNumber):
 #Returned True als een kolom geschikt is voor checkNumber
 def collCheck(collIndex, checkNumber):
     for i in range(9):
-        print(i)
         number = int(sudoku[i][collIndex])
         if number == checkNumber:
             return False
@@ -60,7 +59,6 @@ def getCornerCoordinates(x):
 # Returned true als de plek geschikt is, en anders False
 def sqCheck(row, col, checkNumber):
     tempSq = makeSq(getCornerCoordinates(col), getCornerCoordinates(row))
-    print(tempSq)
     for i in range(3):
         for j in range(3):
             number = tempSq[i][j]
