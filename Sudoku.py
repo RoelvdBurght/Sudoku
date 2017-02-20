@@ -53,7 +53,8 @@ def makeSq(*array):
             x += 1
         vert += 1
     return (tempSq)
-
+#array[] = {3,3}
+#print(makeSq(array))
 
 # Kijkt of een specifieke plek in de sudoku geschikt is voor een nummer
 # Returned True als de plek geschikt is
