@@ -28,7 +28,7 @@ def horRowCheck(array, checkNumber):
         if checkNumber != array[y]:
             print ("boe")
 
-horRowCheck(sudoku[0], 0)
+# horRowCheck(sudoku[0], 0)
 
 #returned True als een rij geschikt is voor checkNumber
 def rowCheck(rowIndex, checkNumber):
@@ -36,8 +36,8 @@ def rowCheck(rowIndex, checkNumber):
     for i in range(8):
         number = int(row[i])
         if checkNumber == number:
-            return True
-    return False
+            return False
+    return True
 
 #Returned True als een kolom geschikt is voor checkNumber
 def collCheck(collIndex, checkNumber):
@@ -84,4 +84,10 @@ def UsableInts( row ):
             usable.remove(existingrow[i])
     print(usable)
 
+def getCornerCoordinates(x, y):
+    correctionX = x%3
+    correctionY = y%3
+    return [x-correctionX, y-correctionY]
+
+print(getCornerCoordinates(8,8))
 UsableInts(0)
