@@ -1,6 +1,6 @@
 # dimensies array
-w = 8
-h = 8
+w = 9
+h = 9
 
 # opent file en assignt de lijnen in een dictionary
 sudokuFile = open("puzzle1.sudoku", "r")
@@ -24,7 +24,7 @@ for x in range(len(sudoku)):
 #returned True als een rij geschikt is voor het nummer checkNumber
 def rowCheck(rowIndex, checkNumber):
     row = sudoku[rowIndex]
-    for i in range(8):
+    for i in range(9):
         number = row[i]
         if checkNumber == number:
             return False
@@ -32,7 +32,8 @@ def rowCheck(rowIndex, checkNumber):
 
 #Returned True als een kolom geschikt is voor checkNumber
 def collCheck(collIndex, checkNumber):
-    for i in range(8):
+    for i in range(9):
+        print(i)
         number = int(sudoku[i][collIndex])
         if number == checkNumber:
             return False
@@ -41,11 +42,10 @@ def collCheck(collIndex, checkNumber):
 #maakt een 3x3 array van arrays uit de grote sudoku
 #met hor & vert als linker bovenhoek
 #returnt 3x3 blokje als output
-def makeSq(*array):
+def makeSq(array):
     hor = array[0]
     vert = array[1]
     tempSq = [[0 for p in range(3)]for q in range(3)]
-    print (tempSq)
     for i in range(3):
         x = hor
         for j in range(3):
@@ -53,8 +53,21 @@ def makeSq(*array):
             x += 1
         vert += 1
     return (tempSq)
-#array[] = {3,3}
-#print(makeSq(array))
+
+def getCornerCoordinates(x, y):
+    correctionX = x%3
+    correctionY = y%3
+    return [x-correctionX, y-correctionY]
+
+def sqCheck(x, y, checkNumber):
+    coordinates = getCornerCoordinates(x, y)
+    tempSq = makeSq(coordinates)
+    for i in range(3):
+        for j in range(3):
+            number = tempSq[i][j]
+            if (number == checkNumber):
+                return False
+    return True
 
 # Kijkt of een specifieke plek in de sudoku geschikt is voor een nummer
 # Returned True als de plek geschikt is
@@ -63,28 +76,15 @@ def spotCheck(spotIndex, checkNumber):
         return False
     return True
 
-"""
-def checkSq(*array):
-    spotCounter = -1
-    for i in range(2):
-        for j in range(2):
-            spotCounter += 1
-            if array[i][j] == 0:
-"""
-
 def usableInts( row ):
     usable = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     existingrow = sudoku[row]
-    existingrow = list(map(int, existingrow))
     for i in range(len(existingrow)):
         if existingrow[i] != 0:
             usable.remove(existingrow[i])
-    print(usable)
-usableInts(2)
 
-def getCornerCoordinates(x, y):
-    correctionX = x%3
-    correctionY = y%3
-    return [x-correctionX, y-correctionY]
 
-#print(getCornerCoordinates(8,8))
+
+
+
+
