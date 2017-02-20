@@ -76,8 +76,12 @@ def spotCheck(spotIndex, checkNumber):
     #return tempSq
 
 def UsableInts( row ):
-    usable = []
+    usable = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     existingrow = sudoku[row]
-    for i in range(8):
+    existingrow = list(map(int, existingrow))
+    for i in range(len(existingrow)):
         if existingrow[i] != 0:
-            usable.append(existingrow[i])
+            usable.remove(existingrow[i])
+    print(usable)
+
+UsableInts(0)
