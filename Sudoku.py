@@ -59,7 +59,7 @@ def makeSq(hor, vert):
         for j in range(3):
             tempSq[i][j] = sudoku[vert][x]
             x += 1
-        vert += 1
+            vert += 1
     return (tempSq)
 
 
@@ -70,7 +70,14 @@ def spotCheck(spotIndex, checkNumber):
         return False
     return True
 
-print(spotCheck([1,1], 4))
+#print(spotCheck([1,1], 4))
 
-    print(tempSq)
-    return tempSq
+   # print(tempSq)
+    #return tempSq
+
+def UsableInts( row ):
+    usable = []
+    existingrow = sudoku[row]
+    for i in range(8):
+        if existingrow[i] != 0:
+            usable.append(existingrow[i])
