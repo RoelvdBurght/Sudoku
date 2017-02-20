@@ -71,14 +71,19 @@ def checkSq(*array):
             if array[i][j] == 0:
 """
 
-def UsableInts( row ):
-    usable = []
+def usableInts( row ):
+    usable = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     existingrow = sudoku[row]
-    for i in range(8):
+    existingrow = list(map(int, existingrow))
+    for i in range(len(existingrow)):
         if existingrow[i] != 0:
-            usable.append(existingrow[i])
+            usable.remove(existingrow[i])
+    print(usable)
+usableInts(2)
 
 def getCornerCoordinates(x, y):
     correctionX = x%3
     correctionY = y%3
     return [x-correctionX, y-correctionY]
+
+#print(getCornerCoordinates(8,8))
