@@ -24,7 +24,7 @@ for x in range(len(sudoku)):
 #returned True als een rij geschikt is voor het nummer checkNumber
 def rowCheck(rowIndex, checkNumber):
     row = sudoku[rowIndex]
-    for i in range(8):
+    for i in range(9):
         number = row[i]
         if checkNumber == number:
             return False
@@ -32,7 +32,7 @@ def rowCheck(rowIndex, checkNumber):
 
 #Returned True als een kolom geschikt is voor checkNumber
 def collCheck(collIndex, checkNumber):
-    for i in range(8):
+    for i in range(9):
         number = int(sudoku[i][collIndex])
         if number == checkNumber:
             return False
@@ -53,8 +53,21 @@ def makeSq(array):
             x += 1
         vert += 1
     return (tempSq)
-#array[] = {3,3}
-#print(makeSq(array))
+
+def getCornerCoordinates(x, y):
+    correctionX = x%3
+    correctionY = y%3
+    return [x-correctionX, y-correctionY]
+
+def sqCheck(x, y, checkNumber):
+    coordinates = getCornerCoordinates(x, y)
+    tempSq = makeSq(coordinates)
+    for i in range(3):
+        for j in range(3):
+            number = tempSq[i][j]
+            if (number == checkNumber):
+                return False
+    return True
 
 # Kijkt of een specifieke plek in de sudoku geschikt is voor een nummer
 # Returned True als de plek geschikt is
@@ -76,6 +89,7 @@ def checkSq(*array):
 def usableInts( row ):
     usable = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     existingrow = sudoku[row]
+    existingrow = list(map(int, existingrow))
     for i in range(len(existingrow)):
         if existingrow[i] != 0:
             usable.remove(existingrow[i])
@@ -83,11 +97,8 @@ def usableInts( row ):
 
 usableInts(2)
 
-def getCornerCoordinates(x, y):
-    correctionX = x%3
-    correctionY = y%3
-    return [x-correctionX, y-correctionY]
 
+#print(getCornerCoordinates(8,8))
 
 # print(getCorner# Coordinates(8,8))
 def isSudokuFilled(sudoku):
