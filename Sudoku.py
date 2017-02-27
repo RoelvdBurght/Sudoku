@@ -97,19 +97,21 @@ def isSudokuFilled(sudoku):
                 return False
     return True
 
-def rememberUsableSpot(row, col, number):
-
-
 def knalleuh(sudoku):
     for i in range(row):
         tempList = usableInts(row)
         for j in range(col):
-            if sudoku[row][col] == 0
+            if sudoku[row][col] == 0:
                 counter = 0
                 for len(tempList):
-                    if(collCheck(col, tempList[counter]) == True && sqCheck(row, col, tempList[counter]) == True)
-                    als beide bovenstaande evaluaties true zijn
-                        onthoud plek en getal dat daar kan
+                    if(collCheck(col, tempList[counter]) == True && sqCheck(row, col, tempList[counter]) == True):
+
+
+
+
+
+'''  als beide bovenstaande evaluaties true zijn
+onthoud plek en getal dat daar kan
                 als er 2 getallen kunnen -> volgend hokje
                 als er 1 getal kan -> vul dat getal in
-    check of sudoku gevuld is
+    check of sudoku gevuld is'''
