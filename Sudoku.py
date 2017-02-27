@@ -28,6 +28,14 @@ def rowCheck(rowIndex, checkNumber):
             return False
     return True
 
+def rowCheck2(rowIndex):
+    row = sudoku[rowIndex]
+    emptyspot = []
+    for i in range[w]:
+        number = row[i]
+        if number == 0:
+
+
 #Returned True als een kolom geschikt is voor checkNumber
 def collCheck(collIndex, checkNumber):
     for i in range(9):
@@ -35,6 +43,8 @@ def collCheck(collIndex, checkNumber):
         if number == checkNumber:
             return False
     return True
+
+print(collCheck(6,9))
 
 #maakt een 3x3 array van arrays uit de grote sudoku
 #met hor & vert als linker bovenhoek
@@ -66,7 +76,7 @@ def sqCheck(row, col, checkNumber):
 
 # Kijkt of een specifieke plek in de sudoku geschikt is voor een nummer
 # Returned True als de plek geschikt is
-def spotCheck(spotIndex, checkNumber):
+def spotCheck( spotIndex, checkNumber ):
     if rowCheck(spotIndex[0], checkNumber) or collCheck(spotIndex[1], checkNumber):
         return False
     return True
@@ -81,9 +91,11 @@ def usableInts( row ):
             usable.remove(existingrow[i])
     return usable
 
-def isSudokuFilled(sudoku):
+def isSudokuFilled( sudoku ):
     for i in range(h):
         for j in range(w):
             if sudoku[i][j] == 0:
                 return False
+    return True
 
+def checkLenList( list ):
