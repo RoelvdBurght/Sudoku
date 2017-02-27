@@ -11,6 +11,7 @@ for line in sudokuFile:
     horLijnDict[x] = line
     x +=1
 
+
 #maakt array aan
 sudoku = [[0 for x in range(w)] for y in range(h)]
 # knalt de lijnen in het array
@@ -71,7 +72,7 @@ def spotCheck(spotIndex, checkNumber):
         return False
     return True
 
-# Creates a list with usable ints for the input row
+# Returns a list with usable ints for the input row
 def usableInts( row ):
     usable = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     existingrow = sudoku[row]
@@ -81,9 +82,26 @@ def usableInts( row ):
             usable.remove(existingrow[i])
     return usable
 
+# Returned False als er een nul in de sudoku zit
 def isSudokuFilled(sudoku):
     for i in range(h):
         for j in range(w):
             if sudoku[i][j] == 0:
                 return False
 
+def rememberUsableSpot(row, col, number):
+
+
+def knalleuh(sudoku):
+    for i in range(row):
+        tempList = usableInts(row)
+        for j in range(col):
+            if sudoku[row][col] == 0
+                counter = 0
+                for len(tempList):
+                    if(collCheck(col, tempList[counter]) == True && sqCheck(row, col, tempList[counter]) == True)
+                    als beide bovenstaande evaluaties true zijn
+                        onthoud plek en getal dat daar kan
+                als er 2 getallen kunnen -> volgend hokje
+                als er 1 getal kan -> vul dat getal in
+    check of sudoku gevuld is
