@@ -3,7 +3,7 @@ w = 9
 h = 9
 
 # opent file en assignt de lijnen in een dictionary
-sudokuFile = open("puzzle2.sudoku", "r")
+sudokuFile = open("puzzle1.sudoku", "r")
 horLijnDict = {}
 x = 0       #als iemand hier een elegantere oplossing voor heeft: graag
 for line in sudokuFile:
@@ -91,7 +91,6 @@ def isSudokuFilled(sudoku):
                 return False
     return True
 
-
 def solveRow(row):
     tempList = usableInts(row)
     for num in tempList:
@@ -164,3 +163,25 @@ def solveSudoku(sudoku):
 solveSudoku(sudoku)
 for i in range(9):
     print(sudoku[i])
+def findEmpty(sudoku):
+    for row in range(9):
+        for col in range(9):
+            if sudoku[row][col] == 0:
+                return row, col
+
+
+def solveSudoku(sudoku):
+    if isSudokuFilled(sudoku):
+        return True
+    row, col = findEmpty(sudoku)
+    list = range(1,10)
+    for num in list:
+        if spotCheck(row, col, num):
+            sudoku[row][col] = num
+            if solveSudoku(sudoku):
+                return True
+    sudoku[row][col] = 0
+    return False
+
+print(solveSudoku(sudoku))
+printsudoku()
