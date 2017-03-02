@@ -68,7 +68,7 @@ def sqCheck(row, col, checkNumber):
 # Kijkt of een specifieke plek in de sudoku geschikt is voor een nummer
 # Returned True als de plek geschikt is
 def spotCheck(row, col, checkNumber):
-    if sqCheck(row, col, checkNumber) == True and collCheck(col, checkNumber) == True:
+    if sqCheck(row, col, checkNumber) == True and collCheck(col, checkNumber) == True and rowCheck(row, checkNumber) == True:
         return True
     return False
 
@@ -143,6 +143,10 @@ def possibleInBox(row, col, num):
                 counterBox += 1
     return counterBox
 
+def printsudoku():
+    for i in range(9):
+        print(sudoku[i])
+
 def placeNumberBox(row, col, num):
     colCoor = getCornerCoordinates(col)
     rowCoor = getCornerCoordinates(row)
@@ -152,7 +156,7 @@ def placeNumberBox(row, col, num):
             if collCheck(colCoor + j, num) and rowCheck(rowCoor + i, num) and sudoku[rowCoor + i][colCoor + j] == 0:
                 sudoku[rowCoor + i][colCoor + j] = num
 
-def solveSudoku(sudoku):
+def solveSudokuEasy(sudoku):
     #while isSudokuFilled(sudoku) == False:
     for i in range(20):
         for i in range(9):
@@ -160,9 +164,6 @@ def solveSudoku(sudoku):
             for j in range(9):
                 solveBox(i, j)
 
-solveSudoku(sudoku)
-for i in range(9):
-    print(sudoku[i])
 def findEmpty(sudoku):
     for row in range(9):
         for col in range(9):
@@ -174,7 +175,7 @@ def solveSudoku(sudoku):
     if isSudokuFilled(sudoku):
         return True
     row, col = findEmpty(sudoku)
-    list = range(1,10)
+    list = usableInts(row) #wat is er in de kolom gaande? En in de box? what's in the booooox
     for num in list:
         if spotCheck(row, col, num):
             sudoku[row][col] = num
@@ -183,5 +184,5 @@ def solveSudoku(sudoku):
     sudoku[row][col] = 0
     return False
 
-print(solveSudoku(sudoku))
+print(solveSudokuEasy(sudoku))
 printsudoku()
