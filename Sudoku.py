@@ -3,7 +3,7 @@ w = 9
 h = 9
 
 # opent file en assignt de lijnen in een dictionary
-sudokuFile = open("puzzle1.sudoku", "r")
+sudokuFile = open("puzzle2.sudoku", "r")
 horLijnDict = {}
 x = 0       #als iemand hier een elegantere oplossing voor heeft: graag
 for line in sudokuFile:
@@ -77,7 +77,6 @@ def spotCheck(row, col, checkNumber):
 def usableInts(row):
     usable = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     existingrow = sudoku[row]
-    #existingrow = list(map(int, existingrow))
     for i in range(len(existingrow)):
         if existingrow[i] != 0:
             usable.remove(existingrow[i])
@@ -98,7 +97,7 @@ def solveRow(row):
     for num in tempList:
         possible = possibleInRow(row, num)
         if possible == 1:
-            placeNumber(row, num)
+            placeNumberRow(row, num)
             tempList.remove(num)
 
 def possibleInRow(row, num):
@@ -109,41 +108,59 @@ def possibleInRow(row, num):
     return counter
 
 
-def placeNumber(row, num):
+def placeNumberRow(row, num):
     for j in range(9):
         if spotCheck(row, j, num) == True:
             if sudoku[row][j] == 0 and spotCheck(row, j, num) == True:
                 sudoku[row][j] = num
 
+def intsBox(row, col):
+    intsforbox = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    box = makeSq(getCornerCoordinates(col),getCornerCoordinates(row))
+    for i in range(3):
+        for j in range(3):
+            number = box[i][j]
+            if number != 0:
+                intsforbox.remove(number)
+    return intsforbox
+
+
+def solveBox(row, col):
+    tempList = intsBox(row, col)
+    for num in tempList:
+        possible = possibleInBox(row, col, num)
+        if possible == 1:
+            placeNumberBox(row, col,  num)
+
+
+def possibleInBox(row, col, num):
+    counterBox = 0
+    colCoor = getCornerCoordinates(col)
+    rowCoor = getCornerCoordinates(row)
+    box = makeSq(colCoor, rowCoor)
+    for i in range(3):
+        for j in range(3):
+            if collCheck(colCoor + j, num) and rowCheck(rowCoor + i, num) and sudoku[rowCoor + i][colCoor + j] == 0:
+                counterBox += 1
+    return counterBox
+
+def placeNumberBox(row, col, num):
+    colCoor = getCornerCoordinates(col)
+    rowCoor = getCornerCoordinates(row)
+    box = makeSq(colCoor, rowCoor)
+    for i in range(3):
+        for  j in range(3):
+            if collCheck(colCoor + j, num) and rowCheck(rowCoor + i, num) and sudoku[rowCoor + i][colCoor + j] == 0:
+                sudoku[rowCoor + i][colCoor + j] = num
+
 def solveSudoku(sudoku):
-    while isSudokuFilled(sudoku) == False:
+    #while isSudokuFilled(sudoku) == False:
+    for i in range(20):
         for i in range(9):
             solveRow(i)
+            for j in range(9):
+                solveBox(i, j)
 
-'''solveRow(0)
-solveRow(1)
-solveRow(2)
-solveRow(3)
-solveRow(4)
-solveRow(5)
-solveRow(6)
-solveRow(7)
-solveRow(8)
-'''
 solveSudoku(sudoku)
-print(sudoku)
-""""
-def knalleuh(sudoku):
-    for i in range(row):
-        tempList = usableInts(row)
-        for j in range(col):
-            if sudoku[row][col] == 0
-                counter = 0
-                for len(tempList):
-                    if(collCheck(col, tempList[counter]) == True && sqCheck(row, col, tempList[counter]) == True)
-                    als beide bovenstaande evaluaties true zijn
-                        onthoud plek en getal dat daar kan
-                als er 2 getallen kunnen -> volgend hokje
-                als er 1 getal kan -> vul dat getal in
-    check of sudoku gevuld is
-"""
+for i in range(9):
+    print(sudoku[i])
